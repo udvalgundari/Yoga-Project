@@ -1,432 +1,979 @@
 <!DOCTYPE html>
 <html>
-  <head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Places Searchbox</title>
-    <link href='css/bootstrap.min.css' rel='stylesheet'>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Places Searchbox</title>
+      <link href="/Users/mac/Downloads/project-master/Yoga-Project/css/bootstrap.min.css" rel='stylesheet'>
+      <link href="/Users/mac/Downloads/project-master/Yoga-Project/css/main.css" rel='stylesheet'>
 
+      <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 500px;
+          width: 700px;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 0px;
+          margin: 0px;
+          padding: 0px;
+        }
 
+        body, html {
+            color: #fff;
+            font: 400 16px/24px Roboto,sans-serif;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
 
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 500px;
-        width: 700px;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 0px;
-        margin: 0px;
-        padding: 0px;
-      }
+        #description {
+          font-family: Roboto;
+          font-size: 15px;
+          font-weight: 300;
+        }
 
-      body, html {
-          color: #5aa8cd;
-          font: 400 16px/24px Roboto,sans-serif;
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          margin: 0;
-          -webkit-text-size-adjust: 100%;
-          -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-      }
-      *, *:before, *:after {
-          box-sizing: inherit;
-      }
+        #infowindow-content .title {
+          font-weight: bold;
+        }
 
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
+        #infowindow-content {
+          display: none;
+        }
 
-      #infowindow-content .title {
-        font-weight: bold;
-      }
+        #map #infowindow-content {
+          display: inline;
+        }
 
-      #infowindow-content {
-        display: none;
-      }
+        .pac-card {
+          margin: 10px 10px 0 0;
+          border-radius: 2px 0 0 2px;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          outline: none;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          background-color: #fff;
+          font-family: Roboto;
+        }
 
-      #map #infowindow-content {
-        display: inline;
-      }
+        #pac-container {
+          padding-bottom: 12px;
+          margin-right: 12px;
+        }
 
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
+        .pac-controls {
+          display: inline-block;
+          padding: 5px 11px;
+        }
 
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
+        .pac-controls label {
+          font-family: Roboto;
+          font-size: 13px;
+          font-weight: 300;
+        }
 
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
+        #pac-input {
+          background-color: #fff;
+          font-family: Roboto;
+          font-size: 15px;
+          font-weight: 300;
+          margin-left: 12px;
+          padding: 0 11px 0 13px;
+          text-overflow: ellipsis;
+          width: 400px;
+        }
 
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
+        #pac-input:focus {
+          border-color: #4d90fe;
+        }
 
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
+        #title {
+          color: #fff;
+          background-color: #4d90fe;
+          font-size: 25px;
+          font-weight: 500;
+          padding: 6px 12px;
+        }
+        #target {
+          width: 345px;
+        }
 
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
+        #content {
+           margin: 0 auto;
+        }
 
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
+        #wrapper {
+          margin: 0 auto;
+        }
 
-      #content {
-         margin: 0 auto;
-      }
+        .maps {
+          width: 512px;
+          display: block;
+          margin: 0 auto;
+        }
 
-      #wrapper {
-        margin: 0 auto;
-      }
+        .section-nav {
+          background: ##42474c;
+          float: left;
+          margin-right: 40px;
+          overflow-x: hidden;
+          overflow-y: auto;
+          padding: 16px 12px 16px 16px;
+          width: 256px;
+          max-height: 280px;
+          position: fixed;
+          top: 176.38px;
+        }
 
-      .maps {
-        width: 512px;
-        display: block;
-        margin: 0 auto;
-      }
+        /* unvisited link */
+        a.devsite-nav-title:link {
+            color: #fff;
+            text-decoration: none;
+        }
+        /* mouse over link */
+        a.devsite-nav-title:hover {
+            color: #5aa8cd;
+        }
 
-      .section-nav {
-        background: #f7f7f7;
-        float: left;
-        margin-right: 40px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        padding: 16px 12px 16px 16px;
-        width: 256px;
-        max-height: 280px;
-        position: fixed;
-        top: 176.38px;
-      }
-
-      /* unvisited link */
-      a.devsite-nav-title:link {
-          color: #212121;
+        .devsite-product-name-wrapper {
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+          height: 76.4px;
+          margin: 6px 0;
+        }
+        .devsite-site-logo-link {
+          display: inline-block;
+          opacity: 1;
+          transition: opacity .2s;
+        }
+        link, :visited {
+          color: inherit;
+          outline: 0;
           text-decoration: none;
-      }
-      /* mouse over link */
-      a.devsite-nav-title:hover {
-          color: #5aa8cd;
-      }
+        }
 
-      .devsite-product-name-wrapper {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex: 0 0 auto;
-        flex: 0 0 auto;
-        height: 76.4px;
-        margin: 6px 0;
-      }
-      .devsite-site-logo-link {
-        display: inline-block;
-        opacity: 1;
-        transition: opacity .2s;
-      }
-      link, :visited {
-        color: inherit;
-        outline: 0;
-        text-decoration: none;
-      }
+        .devsite-product-logo {
+          color: #4285f4;
+          font-size: 24px;
+          height: 72.4px;
+          margin: 2px 16px 2px 0;
+          width: 100.8px;
+          overflow: hidden;
+          white-space: nowrap;
 
-      .devsite-product-logo {
-        color: #4285f4;
-        font-size: 24px;
-        height: 72.4px;
-        margin: 2px 16px 2px 0;
-        width: 100.8px;
-        overflow: hidden;
-        white-space: nowrap;
+        }
 
-      }
+        .devsite-product-name-link {
+          height: auto;
+        }
 
-      .devsite-product-name-link {
-        height: auto;
-      }
+        a:-webkit-any-link {
+          text-decoration: none;
+          cursor: pointer;
+        }
 
-      a:-webkit-any-link {
-        text-decoration: none;
-        cursor: pointer;
-      }
+        li {
+          display: inherit;
+          text-align: -webkit-match-parent;
+        }
 
-      li {
-        display: inherit;
-        text-align: -webkit-match-parent;
-      }
+        .devsite-breadcrumb-list {
+          padding: 0;
+          white-space: nowrap;
+          font-size: 36px;
+          margin-top: 20.195px;
+          margin-bottom: 20.195px;
+        }
 
-      .devsite-breadcrumb-list {
-        padding: 0;
-        white-space: nowrap;
-        font-size: 36px;
-        margin-top: 20.195px;
-        margin-bottom: 20.195px;
-      }
+        .devsite-breadcrumb-item {
 
-      .devsite-breadcrumb-item {
+          height: 36px;
+        }
 
-        height: 36px;
-      }
+        .devsite-product-name {
+          font: 400 20px/36px;
+          margin: 0;
+        }
 
-      .devsite-product-name {
-        font: 400 20px/36px;
-        margin: 0;
-      }
+        .devsite-expand-section-nav {
+          margin: 12px 24px 12px 0;
+        }
 
-      .devsite-expand-section-nav {
-        margin: 12px 24px 12px 0;
-      }
+        .devsite-expand-section-nav {
+          margin: 12px 24px 12px 0;
+        }
 
-      .devsite-expand-section-nav {
-        margin: 12px 24px 12px 0;
-      }
+        .devsite-header-icon-button {
+          color: rgba(0,0,0,.54);
+          display: none;
+          -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+          height: 24px;
+          min-width: 24px;
+          padding: 0;
+          transition: color .2s;
+          width: 24px;
+        }
 
-      .devsite-header-icon-button {
-        color: rgba(0,0,0,.54);
-        display: none;
-        -ms-flex: 0 0 auto;
-        flex: 0 0 auto;
-        height: 24px;
-        min-width: 24px;
-        padding: 0;
-        transition: color .2s;
-        width: 24px;
-      }
+        .button-flat{
+          box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+        }
 
-      .button-flat{
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-      }
+        .button-flat:focus{
+          box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+        }
 
-      .button-flat:focus{
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-      }
-
-      .button-flat:hover{
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-      }
-      .button-flat:active {
-        background: 0;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-      }
+        .button-flat:hover{
+          box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+        }
+        .button-flat:active {
+          background: 0;
+          box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+        }
 
 
-      .devsite-top-logo-row {
-        display: -ms-flexbox;
-        display: flex;
-        height: 88.39px;
-        padding: 0 24px;
-        position: relative;
-      }
+        .devsite-top-logo-row {
+          display: -ms-flexbox;
+          display: flex;
+          height: 88.39px;
+          padding: 0 24px;
+          position: relative;
+        }
 
-      .devsite-full-site-width, .devsite-toast-fill {
-        margin: 0 auto;
-        max-width: 1400px;
-      }
+        .devsite-full-site-width, .devsite-toast-fill {
+          margin: 0 auto;
+          max-width: 1400px;
+        }
 
-      element.style {
-       margin: auto;
-       max-height: 280px;
-       position: fixed;
-       top: 120px;
-      }
+        element.style {
+         margin: auto;
+         max-height: 280px;
+         position: fixed;
+         top: 120px;
+        }
 
-      .top-section-wrapper {
-        position: relative;
-        z-index: 10007;
-        margin: 0;
-        padding: 0;
-        height: 88.391px;
-      }
+        .top-section-wrapper {
+          position: relative;
+          z-index: 10007;
+          margin: 0;
+          padding: 0;
+          height: 88.391px;
+        }
 
-      body {
+        body {
+          display: block;
+          margin: 8px;
+        }
+
+        .devsite-top-section {
+          background-color: #24292e;
+          box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+          position: static;
+          top: 0;
+          width: 100%;
+          z-index: 10005;
+          height: 100%;
+        }
+
+
+        .py-lg-9 {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+        }
+
+        .py-md-8 {
+            padding-top: 64px !important;
+            padding-bottom: 64px !important;
+        }
+
+        .py-7 {
+            padding-top: 48px !important;
+            padding-bottom: 48px !important;
+        }
+        .px-3 {
+            padding-right: 16px !important;
+            padding-left: 16px !important;
+        }
+
+        .mx-lg-0 {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        .mb-lg-0 {
+            margin-bottom: 0 !important;
+        }
+
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+
+
+        form {
+            display: block;
+            margin-top: 0em;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        dl {
+            display: block;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+        }
+
+        .bg-gray-dark {
+            background-color: #24292e !important;
+        }
+
+        body {
+            min-width: 1020px;
+            word-wrap: break-word;
+        }
+
+        body {
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            font-size: 14px;
+            line-height: 1.5;
+            color: #fff;
+            background-color: #fff;
+        }
+
+        html {
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .form-group dt {
+            margin: 0 0 6px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            word-wrap: normal;
+            border: 0;
+            }
+
+        dt {
+            display: block;
+        }
+
+        .home-hero-signup
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: inherit;
+            text-align: left;
+        }
+
+        .form-group label {
+            position: static;
+        }
+
+        .f5 {
+            font-size: 14px !important;
+        }
+
+
+        .text-gray {
+        color: #586069 !important;
+        }
+
+        label {
+            cursor: default;
+        }
+
+        dd {
+            margin-left: 0;
+        }
+
+        dd {
+            display: block;
+            -webkit-margin-start: 0px;
+        }
+
+        .home-hero-signup
+        .form-control-lg {
+            width: 100%;
+            min-height: 46px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        .form-group
+        .form-control {
+            width: 440px;
+            max-width: 100%;
+            margin-right: 5px;
+            background-color: #fafbfc;
+        }
+
+        .input-block {
         display: block;
-        margin: 8px;
-      }
-
-      .devsite-top-section {
-        background-color: #4285f4;
-        box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
-        position: static;
-        top: 0;
         width: 100%;
-        z-index: 10005;
-        height: 100%;
-      }
-    </style>
-  </head>
+        }
+
+        .form-control
+        .form-select {
+        font-size: 14px;
+        }
+
+        .form-control
+        .form-select {
+        min-height: 34px;
+        padding: 6px 8px;
+        font-size: 16px;
+        line-height: 20px;
+        color: #24292e;
+        vertical-align: middle;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        border: 1px solid #d1d5da;
+        border-radius: 3px;
+        outline: none;
+        box-shadow: inset 0 1px 2px rgba(27,31,35,0.075);
+        }
+
+        input, select, textarea, button {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        button, input {
+            overflow: visible;
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        button, input, select, textarea {
+            font: inherit;
+            margin: 0;
+        }
 
 
-  <body class="page">
-    <div class="wrapper" style="margin-top: 48px;">
-      <div class="top-section-wrapper">
-        <header class="devsite-top-section nocontent">
-          <div class="devsite-top-logo-row-wrapper-wrapper">
-            <div class="devsite-top-logo-row devsite-full-site-width">
-              <button type="button" class="devsite-expand-section-nav devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
-              <div class="devsite-product-name-wrapper">
-                <a class="devsite-product-name-link" href="file:///Users/mac/Downloads/project-master/Yoga-Project/html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
-                  <img src="/Users/mac/Downloads/project-master/Yoga-Project/Images/logo-no-border.png" class="devsite-product-logo" alt="Maps">
-                </a>
-                <span class="devsite-product-name">
-                  <ul class="devsite-breadcrumb-list">
-                    <li class="devsite-breadcrumb-item">
-                      <a href="https://developers.google.com/maps/" class="devsite-breadcrumb-link" data-category="Site-Wide Custom Events" data-label="Upper Header" data-label="Upper Header" data-value="1">
-                        Map
+        input {
+            -webkit-appearance: textfield;
+            background-color: white;
+            -webkit-rtl-ordering: logical;
+            cursor: text;
+            padding: 1px;
+            border-width: 2px;
+            border-style: inset;
+            border-color: initial;
+            border-image: initial;
+        }
+
+        input
+        textarea
+        select
+        button {
+        text-rendering: auto;
+        color: initial;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: start;
+        margin: 0em;
+        font: 400 11px system-ui;
+        }
+
+        input
+        textarea
+        select
+        button
+        meter
+        progress {
+            -webkit-writing-mode: horizontal-tb !important;
+        }
+
+
+        input[type="hidden" i]
+        input[type="image" i]
+        input[type="file" i] {
+        -webkit-appearance: initial;
+        background-color: initial;
+        cursor: default;
+        padding: initial;
+        border: initial;
+        }
+
+        input[type="hidden" i] {
+            display: none;
+        }
+
+        input {
+            -webkit-appearance: textfield;
+            background-color: white;
+            -webkit-rtl-ordering: logical;
+            cursor: text;
+            padding: 1px;
+            border-width: 2px;
+            border-style: inset;
+            border-color: initial;
+            border-image: initial;
+        }
+
+        input
+        textarea
+        select
+        button {
+            text-rendering: auto;
+            color: initial;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+            text-align: start;
+            margin: 0em;
+            font: 400 11px system-ui;
+        }
+
+        input
+        textarea
+        select
+        button
+        meter
+        progress {
+            -webkit-writing-mode: horizontal-tb !important;
+        }
+
+        .btn-block {
+        display: block;
+        width: 100%;
+        text-align: center;
+        }
+
+        .btn-large {
+        padding: .75em 1.25em;
+        font-size: inherit;
+        border-radius: 6px;
+        }
+
+        .btn-primary {
+        color: #fff;
+        background-color: #28a745;
+        background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+        }
+
+        .btn {
+        position: relative;
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-repeat: repeat-x;
+        background-position: -1px -1px;
+        background-size: 110% 110%;
+        border: 1px solid rgba(27,31,35,0.2);
+        border-radius: 0.25em;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        height: 46px;
+        }
+
+        input[type="button" i]
+        input[type="submit" i]
+        input[type="reset" i]
+        input[type="file" i]::-webkit-file-upload-button
+        button {
+        border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+        border-style: solid;
+        border-width: 1px;
+        padding: 1px 7px 2px;
+        }
+
+        input[type="button" i]
+        input[type="submit" i]
+        input[type="reset" i]
+        input[type="file" i]::-webkit-file-upload-button
+        button {
+        align-items: flex-start;
+        text-align: center;
+        cursor: default;
+        color: buttontext;
+        background-color: buttonface;
+        box-sizing: border-box;
+        padding: 2px 6px 3px;
+        border-width: 2px;
+        border-style: outset;
+        border-color: buttonface;
+        border-image: initial;
+        }
+
+        input
+        textarea
+        select
+        button {
+        text-rendering: auto;
+        color: initial;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: start;
+        margin: 0em;
+        font: 400 11px system-ui;
+        }
+
+        input
+        textarea
+        select
+        button
+        meter
+        progress {
+            -webkit-writing-mode: horizontal-tb !important;
+        }
+
+        button {
+            -webkit-appearance: button;
+        }
+
+        .home-hero-signup
+        .form-control-note {
+        margin-top: 5px;
+        margin-bottom: 0;
+        font-size: 12px;
+        color: #6a737d;
+        }
+
+        .text-center {
+          text-align: center !important;
+        }
+
+        .mt-6 {
+        margin-top: 40px !important;
+        }
+        p {
+        margin-top: 0;
+        margin-bottom: 10px;
+        }
+
+        p {
+        display: block;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        }
+
+        .d-lg-flex {
+            display: flex !important;
+        }
+
+        .flex-lg-nowrap {
+        flex-wrap: nowrap !important;
+        }
+
+        .flex-justify-between {
+            justify-content: space-between !important;
+        }
+
+        .f4 {
+            font-size: 16px !important;
+        }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .container-lg {
+            max-width: 1012px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .alt-h2 {
+            min-width: 1012px;
+            font-weight: 300;
+        }
+
+        .alt-h2 {
+            line-height: 1.5;
+            font-size: 38px;
+            -webkit-font-smoothing: antialiased;
+            font-family: Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            display: block;
+            font-size: 1.5em;
+            -webkit-margin-before: 0.83em;
+            -webkit-margin-after: 0.83em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            font-weight: bold;
+        }
+
+        .p-responsive {
+            padding-right: 16px !important;
+            padding-left: 16px !important;
+        }
+
+        .py-6 {
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+        }
+
+        .mt-lg-6 {
+            margin-top: 40px !important;
+        }
+
+        .container-xl {
+            max-width: 1280px;
+            margin-right: 25px;
+            margin-left: 25px;
+        }
+
+        div {
+            display: block;
+        }
+
+      </style>
+    </head>
+    <body>
+        <div class="page header">
+          <div class="wrapper">
+            <div class="top-section-wrapper">
+              <header class="devsite-top-section nocontent">
+                <div class="devsite-top-logo-row-wrapper-wrapper">
+                  <div class="devsite-top-logo-row devsite-full-site-width">
+                    <button type="button" class="devsite-expand-section-nav devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
+                    <div class="devsite-product-name-wrapper">
+                      <a class="devsite-product-name-link" href="file:///Users/mac/Downloads/project-master/Yoga-Project/html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
+                        <img src="/Users/mac/Downloads/project-master/Yoga-Project/Images/logo-no-border.png" class="devsite-product-logo" alt="Maps">
+                      </a>
+                      <span class="devsite-product-name">
+                        <ul class="devsite-breadcrumb-list">
+                          <li class="devsite-breadcrumb-item">
+                            <a href="https://developers.google.com/maps/" class="devsite-breadcrumb-link" data-category="Site-Wide Custom Events" data-label="Upper Header" data-label="Upper Header" data-value="1">
+                              Map
+                            </a>
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </header>
+            </div>
+        <div id="gc-wrapper">
+              <div class="main-content" style="background-color: #42474c;">
+                <nav class="section-nav" style="margin: auto; max-height: 280px; position: fixed; top: 176.38px;">
+                  <ul class="devsite-nav-list">
+                    <li class="devsite-nav-item">
+                      <a href="https://developers.google.com/maps/documentation/javascript/examples/" class="devsite-nav-title" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">
+                         <span>Overview</span>
+                      </a>
+                    </li>
+                    <li class="devsite-nav-item devsite-nav-item-heading">
+                      <span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">
+                        <span>Basics</span>
+                      </span>
+                    </li>
+                    <li class="devsite-nav-item">
+                      <a href="https://developers.google.com/maps/documentation/javascript/examples/map-simple" class="devsite-nav-title" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">
+                        <span>Simple map</span>
                       </a>
                     </li>
                   </ul>
-                </span>
+                </nav>
+                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                <div id="map" style="position: relative; overflow: hidden; margin: auto;"></div>
+                <script>
+                  // This example adds a search box to a map, using the Google Place Autocomplete
+                  // feature. People can enter geographical searches. The search box will return a
+                  // pick list containing a mix of places and predicted search terms.
+
+                  // This example requires the Places library. Include the libraries=places
+                  // parameter when you first load the API. For example:
+                  // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+                  function initAutocomplete() {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      center: {lat: 51.500152, lng: -0.126236},
+                      zoom: 13,
+                      mapTypeId: 'roadmap'
+                    });
+
+                    // Create the search box and link it to the UI element.
+                    var input = document.getElementById('pac-input');
+                    var searchBox = new google.maps.places.SearchBox(input);
+                    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                    // Bias the SearchBox results towards current map's viewport.
+                    map.addListener('bounds_changed', function() {
+                      searchBox.setBounds(map.getBounds());
+                    });
+
+                    var markers = [];
+                    // Listen for the event fired when the user selects a prediction and retrieve
+                    // more details for that place.
+                    searchBox.addListener('places_changed', function() {
+                      var places = searchBox.getPlaces();
+
+                      if (places.length == 0) {
+                        return;
+                      }
+
+                      // Clear out the old markers.
+                      markers.forEach(function(marker) {
+                        marker.setMap(null);
+                      });
+                      markers = [];
+
+                      // For each place, get the icon, name and location.
+                      var bounds = new google.maps.LatLngBounds();
+                      places.forEach(function(place) {
+                        if (!place.geometry) {
+                          console.log("Returned place contains no geometry");
+                          return;
+                        }
+                        var icon = {
+                          url: place.icon,
+                          size: new google.maps.Size(71, 71),
+                          origin: new google.maps.Point(0, 0),
+                          anchor: new google.maps.Point(17, 34),
+                          scaledSize: new google.maps.Size(25, 25)
+                        };
+
+                        // Create a marker for each place.
+                        markers.push(new google.maps.Marker({
+                          map: map,
+                          icon: icon,
+                          title: place.name,
+                          position: place.geometry.location
+                        }));
+
+                        if (place.geometry.viewport) {
+                          // Only geocodes have viewport.
+                          bounds.union(place.geometry.viewport);
+                        } else {
+                          bounds.extend(place.geometry.location);
+                        }
+                      });
+                      map.fitBounds(bounds);
+                    });
+                  }
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNA4AnFzrWEzzzyPzq9BsN5-N4Rj7maRw&libraries=places&callback=initAutocomplete"
+                   async defer></script>
               </div>
             </div>
           </div>
-        </header>
-      </div>
+        <div class="newsletter">
+          <div class="py-7 py-md-8 py-lg-9 bg-gray-dark">
+            <div class="container-lg p-responsive text-white text-center">
+              <h2 class="alt-h2">
+                "
+                  Get started for free — join the millions of yoga lovers already using Yoga Pro to learn yoga and share their experience.
+                "
+              </h2>
+            </div>
 
-      <div id="gc-wrapper">
-        <div class="main-content" style="margin-top: 40px;">
-          <nav class="section-nav" style="margin: auto; max-height: 280px; position: fixed; top: 176.38px;">
-            <ul class="devsite-nav-list">
-              <li class="devsite-nav-item">
-                <a href="https://developers.google.com/maps/documentation/javascript/examples/" class="devsite-nav-title" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">
-                   <span>Overview</span>
-                </a>
-              </li>
-              <li class="devsite-nav-item devsite-nav-item-heading">
-                <span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">
-                  <span>Basics</span>
-                </span>
-              </li>
-              <li class="devsite-nav-item">
-                <a href="https://developers.google.com/maps/documentation/javascript/examples/map-simple" class="devsite-nav-title" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">
-                  <span>Simple map</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-          <div id="map" style="position: relative; overflow: hidden; margin: auto;"></div>
-          <script>
-            // This example adds a search box to a map, using the Google Place Autocomplete
-            // feature. People can enter geographical searches. The search box will return a
-            // pick list containing a mix of places and predicted search terms.
+            <div class="container-xl p-responsive py-6 mt-lg-6">
+              <form class="home-hero-signup js-signup-form" autocomplete="off" action="/join" accept-charset="UTF-8" method="post">
+                <input name="utf8" type="hidden" value="✓">
+                <input type="hidden" name="authenticity_token" value="5puMwVf6XLO2e4vICwxtzjIg5SxNQSyeKpSv8PBJ1vRNSMQ7StsMi41hIjWkQvxFLJoTfU99iEm4XSELY9lOew==">
 
-            // This example requires the Places library. Include the libraries=places
-            // parameter when you first load the API. For example:
-            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+                <div class="row d-lg-flex flex-wrap flex-lg-nowrap flex-justify-between">
+                      <dl class="form-group col-lg-3 mt-0 mx-lg-0 mb-lg-0 px-3">
+                        <dt class="input-label sr-only">
+                          <label class="form-label text-gray f5" for="user[login]-footer">Username</label>
+                        </dt>
+                        <dd>
+                          <input type="text" name="user[login]" id="user[login]-footer" class="form-control form-control-lg input-block input-lg" placeholder="Pick a username" data-autocheck-url="/signup_check/username" data-autocheck-authenticity-token="mtUU8P9XlOm0tN85yzFhHEyMFXj6u5dfyBw0n2/f+wr7W3E/+Ig1Bx6+QJWwcCxH391zFoK9BKFPoTssfD4pSQ==">
+                        </dd>
+                      </dl>
 
-            function initAutocomplete() {
-              var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 51.500152, lng: -0.126236},
-                zoom: 13,
-                mapTypeId: 'roadmap'
-              });
+                      <dl class="form-group col-lg-3 mt-0 mx-lg-0 mb-lg-0 px-3">
+                        <dt class="input-label sr-only">
+                          <label class="form-label text-gray f5" for="user[email]-footer">Email</label>
+                        </dt>
+                        <dd>
+                          <input type="text" name="user[email]" id="user[email]-footer" class="form-control form-control-lg input-block input-lg js-email-notice-trigger" placeholder="Your email address" data-autocheck-url="/signup_check/email" data-autocheck-authenticity-token="Rf/HtCRPvRlPpB3DrqER77CenMEhfk8isqqg1aLuP7+DDmA0kL5HC8Hson1rKmSZHD8xgEerI/utT4us4LLgQw==">
+                        </dd>
+                      </dl>
 
-              // Create the search box and link it to the UI element.
-              var input = document.getElementById('pac-input');
-              var searchBox = new google.maps.places.SearchBox(input);
-              map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-              // Bias the SearchBox results towards current map's viewport.
-              map.addListener('bounds_changed', function() {
-                searchBox.setBounds(map.getBounds());
-              });
+                      <dl class="form-group col-lg-3 mt-0 mx-lg-0 mb-lg-0 px-3">
+                        <dt class="input-label sr-only">
+                          <label class="d-none form-label text-gray f5" for="user[password]-footer">Password</label>
+                        </dt>
+                        <dd>
+                          <input type="password" name="user[password]" id="user[password]-footer" class="form-control form-control-lg input-block input-lg" placeholder="Create a password" data-autocheck-url="/signup_check/password" data-autocheck-authenticity-token="+uKu5HVbA6n9NsHfm9dzXroAunKyHIZ6aYeVWpRjylWAcxLdYNpunpUZ4ewXERsK3vSPtgKXG/OEmZoEf4kbbQ==">
+                        </dd>
+                      </dl>
 
-              var markers = [];
-              // Listen for the event fired when the user selects a prediction and retrieve
-              // more details for that place.
-              searchBox.addListener('places_changed', function() {
-                var places = searchBox.getPlaces();
 
-                if (places.length == 0) {
-                  return;
-                }
+                      <input type="hidden" name="source" class="js-signup-source" value="form-home">
+                      <input type="text" name="required_field_0d38" id="required_field_0d38" style="display: none" class="form-control">
+                      <input type="hidden" name="timestamp" value="1523875077513" class="form-control">
+                      <input type="hidden" name="timestamp_secret" value="f718512ed6f188d2a14db53c554d7d9283d6c1b47f56efdc6744f942d9410944" class="form-control">
 
-                // Clear out the old markers.
-                markers.forEach(function(marker) {
-                  marker.setMap(null);
-                });
-                markers = [];
+                      <div class="col-lg-3 mx-lg-0 mb-lg-0 px-3">
+                        <button class="btn btn-primary btn-large f4 btn-block" type="submit" data-ga-click="Signup, Attempt, location:teams;">Sign up for Yoga Pro</button>
+                      </div>
+                </div>
 
-                // For each place, get the icon, name and location.
-                var bounds = new google.maps.LatLngBounds();
-                places.forEach(function(place) {
-                  if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
-                    return;
-                  }
-                  var icon = {
-                    url: place.icon,
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(25, 25)
-                  };
+                <p class="form-control-note text-center mt-6">
+                    <span class="js-email-notice">By clicking “Sign up for Yoga Pro”, you agree to our terms of service and privacy statement. We’ll occasionally send you account related emails.</span>
+                </p>
+              </form>
+            </div>
 
-                  // Create a marker for each place.
-                  markers.push(new google.maps.Marker({
-                    map: map,
-                    icon: icon,
-                    title: place.name,
-                    position: place.geometry.location
-                  }));
-
-                  if (place.geometry.viewport) {
-                    // Only geocodes have viewport.
-                    bounds.union(place.geometry.viewport);
-                  } else {
-                    bounds.extend(place.geometry.location);
-                  }
-                });
-                map.fitBounds(bounds);
-              });
-            }
-          </script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNA4AnFzrWEzzzyPzq9BsN5-N4Rj7maRw&libraries=places&callback=initAutocomplete"
-             async defer></script>
+          </div>
         </div>
-      </div>
-
-    </div>
-
-    <div class="notification">
-    </div>
-
-  </body>
-
-
-
+    </body>
 </html>
