@@ -4,12 +4,42 @@
     <meta charset="utf-8">
     <title>Yoga Site</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/css/Drop_down_menu.css">
 
     <div>
       <img src="C:\Users\sbrb034\Desktop\Yoga\Images\logo.png" display=left>
     </div>
 
   </head>
+  <div class="MENU">
+    <button onclick="myFunction()" class="dropbtn"> MENU </button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/html/aboutus.html"><span><img src="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/Images/lotus.png" width="40" height="40">ABOUT US</a>
+      <a href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/html/poses.html"><span><img src="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/Images/yoga_pose.png" width="40" height="40"></span>POSES</a>
+      <a href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/html/map.html"><span><img src="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/Images/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
+      <a href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/html/form.html"><span><img src="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/Images/news.png" width="40" height="40"></span>NEWSLETTER</a>
+    </div>
+  </div>
+
+  <script>
+
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+  </script>
   <body>
 <div>
   <h1>Yoga Poses</h1>

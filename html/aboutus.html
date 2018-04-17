@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="drop_down_menu.css">
+  
+  <link rel="stylesheet" href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/css/Drop_down_menu.css">
 
 </head>
 
 <body>
 
-<div class="MENU">
-  <button onclick="myFunction()" class="dropbtn">MENU</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href=""><span><img src="..images/lotus.png" width="40" height="40" >ABOUT US</a>
-    <a href="#"><span><img src="file:///Users/sbrb034/Desktop/yoga_pose.png" width="40" height="40"></span>POSES</a>
-    <a href="#"><span><img src="file:///Users/sbrb034/Desktop/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
-    <a href="#"><span><img src="file:///Users/sbrb034/Desktop/news.png" width="40" height="40"></span>NEWSLETTER</a>
+  <div class="MENU">
+    <button onclick="myFunction()" class="dropbtn"> MENU </button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/html/aboutus.html"><span><img src="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/Images/lotus.png" width="40" height="40">ABOUT US</a>
+      <a href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/html/poses.html"><span><img src="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/Images/yoga_pose.png" width="40" height="40"></span>POSES</a>
+      <a href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/html/map.html"><span><img src="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/Images/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
+      <a href="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/html/form.html"><span><img src="/Users/IkhGundari/Documents/coding_course/Yoga Project/Yoga-Project/Images/news.png" width="40" height="40"></span>NEWSLETTER</a>
+    </div>
   </div>
-</div>
 
-<script>
+  <script>
 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
 
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
       }
     }
   }
-}
-</script>
+  </script>
 
 </body>
 
