@@ -1,1 +1,14 @@
-h1
+
+
+.centre {
+    display: centre-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.h1 {
+  font-size: 70px;
+  color: red;
+
+}
