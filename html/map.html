@@ -8,36 +8,6 @@
       <link href="../css/main.css" rel='stylesheet'>
       <link rel="stylesheet" type="text/css" href="../css/Drop_down_menu.css">
 
-    <div class="MENU">
-        <button onclick="myFunction()" class="dropbtn"> MENU </button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="../html/aboutus.html"><span><img src="../Images/lotus.png" width="40" height="40">ABOUT US</a>
-          <a href="../html/poses.html"><span><img src="../Images/yoga_pose.png" width="40" height="40"></span>POSES</a>
-          <a href="../html/map.html"><span><img src="../Images/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
-          <a href="../html/form.html"><span><img src="../Images/news.png" width="40" height="40"></span>NEWSLETTER</a>
-        </div>
-    </div>
-
-    <script>
-
-      function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-      }
-
-      window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show');
-            }
-          }
-        }
-      }
-    </script>
-
       <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -179,8 +149,8 @@
           display: flex;
           -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-          height: 76.4px;
-          margin: 6px 0;
+          height: inherit;
+          margin: 0;
         }
         .devsite-site-logo-link {
           display: inline-block;
@@ -196,9 +166,9 @@
         .devsite-product-logo {
           color: #4285f4;
           font-size: 24px;
-          height: 72.4px;
+          height: 56px;
           margin: 2px 16px 2px 0;
-          width: 100.8px;
+          width: 78px;
           overflow: hidden;
           white-space: nowrap;
 
@@ -222,18 +192,20 @@
           padding: 0;
           white-space: nowrap;
           font-size: 36px;
-          margin-top: 20.195px;
-          margin-bottom: 20.195px;
+          margin-top: 0;
+          margin-bottom: 0;
+          position: inherit;
         }
 
         .devsite-breadcrumb-item {
 
-          height: 36px;
+          height: 56px;
         }
 
         .devsite-product-name {
           font: 400 20px/36px;
           margin: 0;
+          position: inherit;
         }
 
         .devsite-expand-section-nav {
@@ -276,7 +248,7 @@
         .devsite-top-logo-row {
           display: -ms-flexbox;
           display: flex;
-          height: 88.39px;
+          height: inherit;
           padding: 0 24px;
           position: relative;
         }
@@ -297,8 +269,12 @@
           position: relative;
           z-index: 10007;
           margin: 0;
-          padding: 0;
-          height: 88.391px;
+          padding-top: 16px;
+          padding-right: 0px;
+          padding-bottom: 16px;
+          padding-left: 0px;
+          height: 88px;
+          background-color: #5AA8CD;
         }
 
         body {
@@ -307,8 +283,7 @@
         }
 
         .devsite-top-section {
-          background-color: #24292e;
-          box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+          background-color: #5AA8CD;
           position: static;
           top: 0;
           width: 100%;
@@ -810,6 +785,20 @@
             display: block;
         }
 
+        .devsite-top-logo-row-wrapper-wrapper {
+            height: inherit;
+        }
+
+        .map {
+            position: relative;
+            overflow: hidden;
+            margin: auto;
+            margin-top: 20px;
+            margin-right: auto;
+            margin-bottom: auto;
+            margin-left: 20px;
+          }
+
       </style>
     </head>
       <body>
@@ -819,6 +808,34 @@
                 <header class="devsite-top-section nocontent">
                   <div class="devsite-top-logo-row-wrapper-wrapper">
                     <div class="devsite-top-logo-row devsite-full-site-width">
+                      <div class="MENU">
+                          <button onclick="myFunction()" class="dropbtn"> MENU </button>
+                          <div id="myDropdown" class="dropdown-content">
+                            <a href="../html/aboutus.html"><span><img src="../Images/lotus.png" width="40" height="40">ABOUT US</a>
+                            <a href="../html/poses.html"><span><img src="../Images/yoga_pose.png" width="40" height="40"></span>POSES</a>
+                            <a href="../html/map.html"><span><img src="../Images/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
+                            <a href="../html/form.html"><span><img src="../Images/news.png" width="40" height="40"></span>NEWSLETTER</a>
+                          </div>
+                      </div>
+                      <script>
+
+                        function myFunction() {
+                            document.getElementById("myDropdown").classList.toggle("show");
+                        }
+
+                        window.onclick = function(event) {
+                          if (!event.target.matches('.dropbtn')) {
+                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                            var i;
+                            for (i = 0; i < dropdowns.length; i++) {
+                              var openDropdown = dropdowns[i];
+                              if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                              }
+                            }
+                          }
+                        }
+                      </script>
                       <button type="button" class="devsite-expand-section-nav devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
                       <div class="devsite-product-name-wrapper">
                         <a class="devsite-product-name-link" href="file:///Users/mac/Downloads/project-master/Yoga-Project/html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
@@ -839,7 +856,7 @@
                 </header>
               </div>
           <div id="gc-wrapper">
-                <div class="main-content" style="background-color: #42474c;">
+                <div class="main-content" style="background-color: #fff;">
                   <nav class="section-nav" style="margin: auto; max-height: 280px; position: fixed; top: 176.38px;">
                     <ul class="devsite-nav-list">
                       <li class="devsite-nav-item">
@@ -860,7 +877,7 @@
                     </ul>
                   </nav>
                   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                  <div id="map" style="position: relative; overflow: hidden; margin: auto;"></div>
+                  <div id="map" style="position: relative; overflow: hidden; margin-top: 200px; margin-bottom: 200px; margin-left: auto; margin-right: auto;"></div>
                   <script>
                     // This example adds a search box to a map, using the Google Place Autocomplete
                     // feature. People can enter geographical searches. The search box will return a
