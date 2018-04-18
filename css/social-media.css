@@ -33,14 +33,18 @@ section {
 }
 
 .FTp19 {
-    margin: 0 0 10px;
+    margin-bottom: 7px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
     height: 24px;
-    width: 1150px;
+    width: 175px;
     font-size: 20px;
     font-weight: 300;
     line-height: normal;
     color: #fff;
     font-family: Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif;
+    position: relative;
 }
 
 .nav-item {
@@ -242,4 +246,13 @@ h3 {
 
 ._2LsBn {
     width: 212px;
+}
+
+._29oGF {
+  margin-top: 18px;
+  color: #fffff;
+  font-size: 12px;
+  line-height: normal;
+  font-family: Roboto,sans-serif;
+  text-align: left;
 }
