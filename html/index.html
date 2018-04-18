@@ -5,13 +5,17 @@
     <title> YogaPro </title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/Drop_down_menu.css">
-
+    <link rel="stylesheet" href="../css/navbar.css">
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width,
     initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <SCRIPT LANGUAGE="JavaScript" SRC="script.js"></SCRIPT>
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   </head>
+
 
   <div class="page header">
     <div class="wrapper">
@@ -55,16 +59,126 @@
     </div>
   </div>
 
-
-    <img class"displayed" width="400px" height="250px" alt
-    src="../images/logo.png" alt="YogaPro">
+</br>
+    <img src="../images/logo-no-border.png" alt="YogaPro" class="center">
     </img>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
 
+  <style type="text/css">
+  #overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  filter:alpha(opacity=70);
+  -moz-opacity:0.7;
+  -khtml-opacity: 0.7;
+  opacity: 0.7;
+  z-index: 100;
+  display: none;
+  }
+  .cnt223 a{
+  text-decoration: none;
+  }
+  .popup{
+  width: 100%;
+  margin: 0 auto;
+  display: none;
+  position: fixed;
+  z-index: 101;
+  }
+  .cnt223{
+  min-width: 600px;
+  width: 600px;
+  min-height: 150px;
+  margin: 100px auto;
+  background: #f3f3f3;
+  position: relative;
+  z-index: 103;
+  padding: 15px 35px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #000;
+  }
+  .cnt223 p{
+  clear: both;
+      color: #555555;
+      text-align: justify;
+      font-size: 20px;
+      font-family: "HelveticaNeue-Light";
+  }
+  .cnt223 p a{
+  color: #d91900;
+  font-weight: bold;
+  }
+  .cnt223 .x{
+  float: right;
+  height: 35px;
+  left: 22px;
+  position: relative;
+  top: -25px;
+  width: 34px;
+  }
+  .cnt223 .x:hover{
+  cursor: pointer;
+  }
+
+  h1 {
+   color: #5aa8cd;
+   text-align: center;
+  }
+  .centre-button {
+    text-align: center;
+
+  }
+  </style>
+
+  <script type='text/javascript'>
+  $(function(){
+  var overlay = $('<div id="overlay"></div>');
+  overlay.show();
+  overlay.appendTo(document.body);
+  $('.popup').show();
+  $('.close').click(function(){
+  $('.popup').hide();
+  overlay.appendTo(document.body).remove();
+  return false;
+  });
+
+
+
+
+  $('.x').click(function(){
+  $('.popup').hide();
+  overlay.appendTo(document.body).remove();
+  return false;
+  });
+  });
+  </script>
+  <div class='popup'>
+  <div class='cnt223'>
+    <div class="popupCloseButton">X</div>
+  <h1>Want more zen in your life?</h1>
+  <p>
+  Sign up to our newsletters to receive updates on our yogi meet ups and more!
+
+  <form method="get" action="../html/form.html">
+    <button type="submit" class="centre-button">Sign me up please!</button>
+  </form>
+  <script>
+  <button onclick="window.location.href=""../html/form.html">Continue</button>
+  </script>
+
+  <a href='' class='close'> <div class="popupCloseButton">X</div></a>
+  </p>
+  </div>
+  </div>
 
   <body>
-
-      <h1> Yoga Pro </h1>
-        <p> We are here to help </p>
+    <p>
+      Welcome to Yoga Pro - the ultimate place to retreat from your hectic schedules
+    </p>
       <ul>
         <li="video">
         <video width="80%" height="auto" autoplay controls loop>
@@ -72,6 +186,10 @@
         </video>
         </li>
       </ul>
+
+      <p>
+        hello ladies and gentleman
+      </p>
 
 
   </body>
