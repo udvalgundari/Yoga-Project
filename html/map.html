@@ -166,12 +166,16 @@
         .devsite-product-logo {
           color: #4285f4;
           font-size: 24px;
-          height: 56px;
-          margin: 2px 16px 2px 0;
-          width: 78px;
+          height: 28px;
+          width: 39px;
           overflow: hidden;
           white-space: nowrap;
-
+          margin-top: 14px;
+          margin-bottom: 14px;
+          margin-left: 1066px;
+          align-items: flex-start;
+          text-align: center;
+          text-rendering: auto;
         }
 
         .devsite-product-name-link {
@@ -191,7 +195,7 @@
         .devsite-breadcrumb-list {
           padding: 0;
           white-space: nowrap;
-          font-size: 36px;
+          font-size: 16px;
           margin-top: 0;
           margin-bottom: 0;
           position: inherit;
@@ -269,12 +273,8 @@
           position: relative;
           z-index: 10007;
           margin: 0;
-          padding-top: 16px;
-          padding-right: 0px;
-          padding-bottom: 16px;
-          padding-left: 0px;
-          height: 88px;
-          background-color: #5AA8CD;
+          height: 56px;
+          background-color: #fffff;
         }
 
         body {
@@ -288,7 +288,7 @@
           top: 0;
           width: 100%;
           z-index: 10005;
-          height: 100%;
+          height: 56px;
         }
 
 
@@ -352,8 +352,7 @@
         }
 
         body {
-            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-            font-size: 14px;
+            font-family: HelveticaNeue-Light;
             line-height: 1.5;
             color: #fff;
             background-color: #fff;
@@ -747,18 +746,17 @@
         }
 
         h2 {
-            margin-top: 0;
-            margin-bottom: 0;
+            margin-top: 200px;
+            margin-bottom: 70px;
         }
 
         h2 {
             display: block;
             font-size: 1.5em;
-            -webkit-margin-before: 0.83em;
-            -webkit-margin-after: 0.83em;
             -webkit-margin-start: 0px;
             -webkit-margin-end: 0px;
-            font-weight: bold;
+            color: #5AA8CD;
+            font-family: HelveticaNeue-Light;
         }
 
         .p-responsive {
@@ -799,6 +797,34 @@
             margin-left: 20px;
           }
 
+      .MENU {
+          margin-right: 5px;
+      }
+
+     .rvl-StickyPhone-text {
+        flex: 1 0 50%;
+        padding-right: calc(1rem + 5%);
+        margin-top: auto;
+        margin-right: -5%;
+        margin-bottom: 300px;
+        margin-left: auto;
+     }
+
+     p {
+        margin: 1.25rem 0;
+        color: #a0a6ad;
+        display: block;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        font-family: Roboto,-apple-system,Helvetica Neue,Helvetica,Segoe UI,Arial,sans-serif;
+        font-size: 20px;
+        line-height: 1.5em;
+        -webkit-font-smoothing: antialiased;
+    }
+
+
       </style>
     </head>
       <body>
@@ -838,23 +864,32 @@
                       </script>
                       <button type="button" class="devsite-expand-section-nav devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
                       <div class="devsite-product-name-wrapper">
-                        <a class="devsite-product-name-link" href="file:///Users/mac/Downloads/project-master/Yoga-Project/html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
-                          <img src="../Images/logo-no-border.png" class="devsite-product-logo" alt="Maps">
-                        </a>
+
                         <span class="devsite-product-name">
                           <ul class="devsite-breadcrumb-list">
                             <li class="devsite-breadcrumb-item">
-                              <a href="https://developers.google.com/maps/" class="devsite-breadcrumb-link" data-category="Site-Wide Custom Events" data-label="Upper Header" data-label="Upper Header" data-value="1">
-                                Map
+                              <a href="../html/map.html" class="devsite-breadcrumb-link" data-category="Site-Wide Custom Events" data-label="Upper Header" data-label="Upper Header" data-value="1" style="display: block; margin-top: 16px; margin-bottom: 16px;">
+                                MAP
                               </a>
                             </li>
                           </ul>
                         </span>
+                        <a class="devsite-product-name-link" href="file:///Users/mac/Downloads/project-master/Yoga-Project/html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
+                          <img src="../Images/logo-no-border.png" class="devsite-product-logo" alt="Maps">
+                        </a>
                       </div>
                     </div>
                   </div>
                 </header>
               </div>
+          <div class="alt-h2 text-center">
+            <h2>
+                Find the best studio near you
+            </h2>
+            <p class="rvl-StickyPhone-text">
+              You can buy, hold and exchange Bitcoin, Ether and Litecoin with 25 fiat currencies at the best possible exchange rate.
+            </p>
+          </div>
           <div id="gc-wrapper">
                 <div class="main-content" style="background-color: #fff;">
                   <nav class="section-nav" style="margin: auto; max-height: 280px; position: fixed; top: 176.38px;">
