@@ -3,7 +3,7 @@
 <html>
   <head>
     <title> YogaPro </title>
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/Drop_down_menu.css">
 
     <script src="../js/jquery-3.3.1.min.js"></script>
@@ -12,47 +12,72 @@
     initial-scale=1.0">
 
   </head>
-  <div class="MENU">
-    <button onclick="myFunction()" class="dropbtn"> MENU </button>
-    <div id="myDropdown" class="dropdown-content">
-      <a href="../html/aboutus.html"><span><img src="../Images/lotus.png" width="40" height="40">ABOUT US</a>
-      <a href="../html/poses.html"><span><img src="../Images/yoga_pose.png" width="40" height="40"></span>POSES</a>
-      <a href="../html/map.html"><span><img src="../Images/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
-      <a href="../html/form.html"><span><img src="../Images/news.png" width="40" height="40"></span>NEWSLETTER</a>
+
+  <div class="page header">
+    <div class="wrapper">
+      <div class="top-section-wrapper">
+        <header class="devsite-top-section nocontent">
+          <div class="devsite-top-logo-row-wrapper-wrapper">
+            <div class="devsite-top-logo-row devsite-full-site-width">
+              <div class="MENU">
+                  <button onclick="myFunction()" class="dropbtn"> MENU </button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <a href="../html/aboutus.html"><span><img src="../Images/lotus.png" width="40" height="40">ABOUT US</a>
+                    <a href="../html/poses.html"><span><img src="../Images/yoga_pose.png" width="40" height="40"></span>POSES</a>
+                    <a href="../html/map.html"><span><img src="../Images/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
+                    <a href="../html/form.html"><span><img src="../Images/news.png" width="40" height="40"></span>NEWSLETTER</a>
+                  </div>
+              </div>
+              <script>
+
+                function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("show");
+                }
+
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+              </script>
+              <button type="button" class="devsite-expand-section-nav devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
+              <div class="devsite-product-name-wrapper">
+
+                <a class="devsite-product-name-link" href="../html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
+                  <img src="../Images/logo-no-border.png" class="devsite-product-logo" alt="Maps">
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
     </div>
   </div>
 
-  <script>
 
-  function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
-  }
-
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
-  </script>
-    <img width="400px" height="250px" class="centre"
+    <img class"displayed" width="400px" height="250px" alt
     src="../images/logo.png" alt="YogaPro">
     </img>
 
 
   <body>
 
-      <h1> YogaPro </h1>
+      <h1> Yoga Pro </h1>
         <p> We are here to help </p>
-
-        <video width="100%" height="auto" autoplay controls loop>
+      <ul>
+        <li="video">
+        <video width="80%" height="auto" autoplay controls loop>
           <source src="../video/yogavideo.mp4" type="video/mp4">
         </video>
+        </li>
+      </ul>
+
 
   </body>
