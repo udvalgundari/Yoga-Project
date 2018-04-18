@@ -126,6 +126,7 @@ body {
 }
 p {
   text-align: center;
+  color:#5aa8cd;
 }
 
 .center {
@@ -150,12 +151,12 @@ video {
   width: 80%;
 }
 
+
+
 h1 {
-  color: red;
-  text-align: center;
+  color:#5aa8cd;
 
 }
-
 body {
 
   display: block;
