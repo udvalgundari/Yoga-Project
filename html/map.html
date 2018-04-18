@@ -176,6 +176,16 @@
           align-items: flex-start;
           text-align: center;
           text-rendering: auto;
+          position: relative;
+          -webkit-writing-mode: horizontal-tb !important;
+          -webkit-font-smoothing: antialiased;
+          display: inline-block!important;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          box-sizing: border-box;
+          -webkit-tap-highlight-color: transparent;
+
         }
 
         .devsite-product-name-link {
@@ -795,7 +805,6 @@
 
      .rvl-StickyPhone-text {
         flex: 1 0 50%;
-
         margin-top: auto;
         margin-bottom: 75px;
         margin-left: auto;
@@ -866,7 +875,7 @@
                             </li>
                           </ul>
                         </span>
-                        <a class="devsite-product-name-link" href="file:///Users/mac/Downloads/project-master/Yoga-Project/html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
+                        <a class="devsite-product-name-link" href="../html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
                           <img src="../Images/logo-no-border.png" class="devsite-product-logo" alt="Maps">
                         </a>
                       </div>
@@ -904,7 +913,7 @@
                     </ul>
                   </nav>
                   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                  <div id="map" style="position: relative; overflow: hidden; margin-top: 200px; margin-bottom: 200px; margin-left: auto; margin-right: auto;"></div>
+                  <div id="map" style="position: relative; overflow: hidden; margin-top: 100px; margin-bottom: 200px; margin-left: auto; margin-right: auto;"></div>
                   <script>
                     // This example adds a search box to a map, using the Google Place Autocomplete
                     // feature. People can enter geographical searches. The search box will return a
