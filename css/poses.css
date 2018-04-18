@@ -3,6 +3,9 @@
   <head>
     <link rel="stylesheet" href="css/poses.css"
 </head>
+* {
+  font-family: "HelveticaNeue-Light";
+}
 
 .row {
   display: flex;
@@ -17,5 +20,5 @@
 
   .column img {
     margin-top: 8px;
-    vertical-alugn: middlw;
+    vertical-align: middle;
   }
