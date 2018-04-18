@@ -7,6 +7,7 @@
 
 section {
     display: block;
+    color: white;
 }
 
 ::selection {
@@ -26,15 +27,16 @@ section {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding-bottom: 45px;
-    height: 190px;
+    padding-bottom: 90px;
+    height: 60px;
+    border-bottom: 1px solid #b4d0e8;
 }
 
 .FTp19 {
-    margin: 0 0 14px;
-    height: 86px;
+    margin: 0 0 10px;
+    height: 24px;
     width: 1150px;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 300;
     line-height: normal;
     color: #fff;
@@ -230,4 +232,14 @@ h3 {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
     font-weight: bold;
+}
+
+._21Vjh {
+    width: 222px;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+._2LsBn {
+    width: 212px;
 }
