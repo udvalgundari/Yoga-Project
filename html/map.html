@@ -1,45 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Places Searchbox</title>
       <link href="../css/bootstrap.min.css" rel='stylesheet'>
       <link href="../css/main.css" rel='stylesheet'>
       <link rel="stylesheet" type="text/css" href="../css/Drop_down_menu.css">
-
-
-
-      <div class="MENU">
-        <button onclick="myFunction()" class="dropbtn"> MENU </button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="../html/aboutus.html"><span><img src="../Images/lotus.png" width="40" height="40">ABOUT US</a>
-          <a href="../html/poses.html"><span><img src="../Images/yoga_pose.png" width="40" height="40"></span>POSES</a>
-          <a href="../html/map.html"><span><img src="../Images/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
-          <a href="../html/form.html"><span><img src="../Images/news.png" width="40" height="40"></span>NEWSLETTER</a>
-        </div>
-      </div>
-
-     <script>
-
-      function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-      }
-
-      window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show');
-            }
-          }
-        }
-      }
-      </script>
 
       <style>
         /* Always set the map height explicitly to define the size of the div
@@ -182,8 +149,8 @@
           display: flex;
           -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-          height: 76.4px;
-          margin: 6px 0;
+          height: inherit;
+          margin: 0;
         }
         .devsite-site-logo-link {
           display: inline-block;
@@ -199,12 +166,16 @@
         .devsite-product-logo {
           color: #4285f4;
           font-size: 24px;
-          height: 72.4px;
-          margin: 2px 16px 2px 0;
-          width: 100.8px;
+          height: 28px;
+          width: 39px;
           overflow: hidden;
           white-space: nowrap;
-
+          margin-top: 14px;
+          margin-bottom: 14px;
+          margin-left: 1066px;
+          align-items: flex-start;
+          text-align: center;
+          text-rendering: auto;
         }
 
         .devsite-product-name-link {
@@ -224,19 +195,21 @@
         .devsite-breadcrumb-list {
           padding: 0;
           white-space: nowrap;
-          font-size: 36px;
-          margin-top: 20.195px;
-          margin-bottom: 20.195px;
+          font-size: 16px;
+          margin-top: 0;
+          margin-bottom: 0;
+          position: inherit;
         }
 
         .devsite-breadcrumb-item {
 
-          height: 36px;
+          height: 56px;
         }
 
         .devsite-product-name {
           font: 400 20px/36px;
           margin: 0;
+          position: inherit;
         }
 
         .devsite-expand-section-nav {
@@ -279,7 +252,7 @@
         .devsite-top-logo-row {
           display: -ms-flexbox;
           display: flex;
-          height: 88.39px;
+          height: inherit;
           padding: 0 24px;
           position: relative;
         }
@@ -300,8 +273,8 @@
           position: relative;
           z-index: 10007;
           margin: 0;
-          padding: 0;
-          height: 88.391px;
+          height: 56px;
+          background-color: #fffff;
         }
 
         body {
@@ -310,13 +283,12 @@
         }
 
         .devsite-top-section {
-          background-color: #24292e;
-          box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+          background-color: #5AA8CD;
           position: static;
           top: 0;
           width: 100%;
           z-index: 10005;
-          height: 100%;
+          height: 56px;
         }
 
 
@@ -380,8 +352,7 @@
         }
 
         body {
-            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-            font-size: 14px;
+            font-family: HelveticaNeue-Light;
             line-height: 1.5;
             color: #fff;
             background-color: #fff;
@@ -775,18 +746,17 @@
         }
 
         h2 {
-            margin-top: 0;
-            margin-bottom: 0;
+            margin-top: 200px;
+            margin-bottom: 70px;
         }
 
         h2 {
             display: block;
             font-size: 1.5em;
-            -webkit-margin-before: 0.83em;
-            -webkit-margin-after: 0.83em;
             -webkit-margin-start: 0px;
             -webkit-margin-end: 0px;
-            font-weight: bold;
+            color: #5AA8CD;
+            font-family: HelveticaNeue-Light;
         }
 
         .p-responsive {
@@ -813,38 +783,115 @@
             display: block;
         }
 
+        .devsite-top-logo-row-wrapper-wrapper {
+            height: inherit;
+        }
+
+        .map {
+            position: relative;
+            overflow: hidden;
+            margin: auto;
+            margin-top: 20px;
+            margin-right: auto;
+            margin-bottom: auto;
+            margin-left: 20px;
+          }
+
+      .MENU {
+          margin-right: 5px;
+      }
+
+     .rvl-StickyPhone-text {
+        flex: 1 0 50%;
+        padding-right: calc(1rem + 5%);
+        margin-top: auto;
+        margin-right: -5%;
+        margin-bottom: 300px;
+        margin-left: auto;
+     }
+
+     p {
+        margin: 1.25rem 0;
+        color: #a0a6ad;
+        display: block;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        font-family: Roboto,-apple-system,Helvetica Neue,Helvetica,Segoe UI,Arial,sans-serif;
+        font-size: 20px;
+        line-height: 1.5em;
+        -webkit-font-smoothing: antialiased;
+    }
+
+
       </style>
     </head>
       <body>
-
-
           <div class="page header">
             <div class="wrapper">
               <div class="top-section-wrapper">
                 <header class="devsite-top-section nocontent">
                   <div class="devsite-top-logo-row-wrapper-wrapper">
                     <div class="devsite-top-logo-row devsite-full-site-width">
+                      <div class="MENU">
+                          <button onclick="myFunction()" class="dropbtn"> MENU </button>
+                          <div id="myDropdown" class="dropdown-content">
+                            <a href="../html/aboutus.html"><span><img src="../Images/lotus.png" width="40" height="40">ABOUT US</a>
+                            <a href="../html/poses.html"><span><img src="../Images/yoga_pose.png" width="40" height="40"></span>POSES</a>
+                            <a href="../html/map.html"><span><img src="../Images/yoga_matt.png" width="40" height="40"></span>STUDIOS</a>
+                            <a href="../html/form.html"><span><img src="../Images/news.png" width="40" height="40"></span>NEWSLETTER</a>
+                          </div>
+                      </div>
+                      <script>
+
+                        function myFunction() {
+                            document.getElementById("myDropdown").classList.toggle("show");
+                        }
+
+                        window.onclick = function(event) {
+                          if (!event.target.matches('.dropbtn')) {
+                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                            var i;
+                            for (i = 0; i < dropdowns.length; i++) {
+                              var openDropdown = dropdowns[i];
+                              if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                              }
+                            }
+                          }
+                        }
+                      </script>
                       <button type="button" class="devsite-expand-section-nav devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
                       <div class="devsite-product-name-wrapper">
-                        <a class="devsite-product-name-link" href="file:///Users/mac/Downloads/project-master/Yoga-Project/html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
-                          <img src="/Users/mac/Downloads/project-master/Yoga-Project/Images/logo-no-border.png" class="devsite-product-logo" alt="Maps">
-                        </a>
+
                         <span class="devsite-product-name">
                           <ul class="devsite-breadcrumb-list">
                             <li class="devsite-breadcrumb-item">
-                              <a href="https://developers.google.com/maps/" class="devsite-breadcrumb-link" data-category="Site-Wide Custom Events" data-label="Upper Header" data-label="Upper Header" data-value="1">
-                                Map
+                              <a href="../html/map.html" class="devsite-breadcrumb-link" data-category="Site-Wide Custom Events" data-label="Upper Header" data-label="Upper Header" data-value="1" style="display: block; margin-top: 16px; margin-bottom: 16px;">
+                                MAP
                               </a>
                             </li>
                           </ul>
                         </span>
+                        <a class="devsite-product-name-link" href="file:///Users/mac/Downloads/project-master/Yoga-Project/html/index.html" data-category="Site-Wide Custom Events" data-label="Project logo (header)">
+                          <img src="../Images/logo-no-border.png" class="devsite-product-logo" alt="Maps">
+                        </a>
                       </div>
                     </div>
                   </div>
                 </header>
               </div>
+          <div class="alt-h2 text-center">
+            <h2>
+                Find the best studio near you
+            </h2>
+            <p class="rvl-StickyPhone-text">
+              You can buy, hold and exchange Bitcoin, Ether and Litecoin with 25 fiat currencies at the best possible exchange rate.
+            </p>
+          </div>
           <div id="gc-wrapper">
-                <div class="main-content" style="background-color: #42474c;">
+                <div class="main-content" style="background-color: #fff;">
                   <nav class="section-nav" style="margin: auto; max-height: 280px; position: fixed; top: 176.38px;">
                     <ul class="devsite-nav-list">
                       <li class="devsite-nav-item">
@@ -865,7 +912,7 @@
                     </ul>
                   </nav>
                   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                  <div id="map" style="position: relative; overflow: hidden; margin: auto;"></div>
+                  <div id="map" style="position: relative; overflow: hidden; margin-top: 200px; margin-bottom: 200px; margin-left: auto; margin-right: auto;"></div>
                   <script>
                     // This example adds a search box to a map, using the Google Place Autocomplete
                     // feature. People can enter geographical searches. The search box will return a
@@ -947,67 +994,6 @@
                 </div>
               </div>
             </div>
-          <div class="newsletter">
-            <div class="py-7 py-md-8 py-lg-9 bg-gray-dark">
-              <div class="container-lg p-responsive text-white text-center">
-                <h2 class="alt-h2">
-                  "
-                    Get started for free — join the millions of yoga lovers already using Yoga Pro to learn yoga and share their experience.
-                  "
-                </h2>
-              </div>
-
-              <div class="container-xl p-responsive py-6 mt-lg-6">
-                <form class="home-hero-signup js-signup-form" autocomplete="off" action="/join" accept-charset="UTF-8" method="post">
-                  <input name="utf8" type="hidden" value="✓">
-                  <input type="hidden" name="authenticity_token" value="5puMwVf6XLO2e4vICwxtzjIg5SxNQSyeKpSv8PBJ1vRNSMQ7StsMi41hIjWkQvxFLJoTfU99iEm4XSELY9lOew==">
-
-                  <div class="row d-lg-flex flex-wrap flex-lg-nowrap flex-justify-between">
-                        <dl class="form-group col-lg-3 mt-0 mx-lg-0 mb-lg-0 px-3">
-                          <dt class="input-label sr-only">
-                            <label class="form-label text-gray f5" for="user[login]-footer">Username</label>
-                          </dt>
-                          <dd>
-                            <input type="text" name="user[login]" id="user[login]-footer" class="form-control form-control-lg input-block input-lg" placeholder="Pick a username" data-autocheck-url="/signup_check/username" data-autocheck-authenticity-token="mtUU8P9XlOm0tN85yzFhHEyMFXj6u5dfyBw0n2/f+wr7W3E/+Ig1Bx6+QJWwcCxH391zFoK9BKFPoTssfD4pSQ==">
-                          </dd>
-                        </dl>
-
-                        <dl class="form-group col-lg-3 mt-0 mx-lg-0 mb-lg-0 px-3">
-                          <dt class="input-label sr-only">
-                            <label class="form-label text-gray f5" for="user[email]-footer">Email</label>
-                          </dt>
-                          <dd>
-                            <input type="text" name="user[email]" id="user[email]-footer" class="form-control form-control-lg input-block input-lg js-email-notice-trigger" placeholder="Your email address" data-autocheck-url="/signup_check/email" data-autocheck-authenticity-token="Rf/HtCRPvRlPpB3DrqER77CenMEhfk8isqqg1aLuP7+DDmA0kL5HC8Hson1rKmSZHD8xgEerI/utT4us4LLgQw==">
-                          </dd>
-                        </dl>
-
-
-                        <dl class="form-group col-lg-3 mt-0 mx-lg-0 mb-lg-0 px-3">
-                          <dt class="input-label sr-only">
-                            <label class="d-none form-label text-gray f5" for="user[password]-footer">Password</label>
-                          </dt>
-                          <dd>
-                            <input type="password" name="user[password]" id="user[password]-footer" class="form-control form-control-lg input-block input-lg" placeholder="Create a password" data-autocheck-url="/signup_check/password" data-autocheck-authenticity-token="+uKu5HVbA6n9NsHfm9dzXroAunKyHIZ6aYeVWpRjylWAcxLdYNpunpUZ4ewXERsK3vSPtgKXG/OEmZoEf4kbbQ==">
-                          </dd>
-                        </dl>
-
-
-                        <input type="hidden" name="source" class="js-signup-source" value="form-home">
-                        <input type="text" name="required_field_0d38" id="required_field_0d38" style="display: none" class="form-control">
-                        <input type="hidden" name="timestamp" value="1523875077513" class="form-control">
-                        <input type="hidden" name="timestamp_secret" value="f718512ed6f188d2a14db53c554d7d9283d6c1b47f56efdc6744f942d9410944" class="form-control">
-
-                        <div class="col-lg-3 mx-lg-0 mb-lg-0 px-3">
-                          <button class="btn btn-primary btn-large f4 btn-block" type="submit" data-ga-click="Signup, Attempt, location:teams;">Sign up for Yoga Pro</button>
-                        </div>
-                  </div>
-
-                  <p class="form-control-note text-center mt-6">
-                      <span class="js-email-notice">By clicking “Sign up for Yoga Pro”, you agree to our terms of service and privacy statement. We’ll occasionally send you account related emails.</span>
-                  </p>
-                </form>
-              </div>
-
             </div>
           </div>
       </body>
