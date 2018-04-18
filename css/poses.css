@@ -7,6 +7,12 @@
   font-family: "HelveticaNeue-Light";
 }
 
+.content {
+  max-width: 600px
+  margin:auto;
+
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
