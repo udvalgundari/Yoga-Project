@@ -71,7 +71,6 @@ a {
 }
 
 a:-webkit-any-link {
-    color: -webkit-link;
     cursor: pointer;
     text-decoration: none;
 }
@@ -161,7 +160,7 @@ body, html {
     min-width: 1150px;
 }
 
-audio, canvas, iframe, img, svg, video {
+audio, canvas, iframe, svg, video {
     vertical-align: middle;
 }
 
